@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    tools:context=".ui.launch.SplashActivity"
+    tools:viewBindingIgnore="true">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/asTvAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/app_name"
+        style="@style/Text.Splash"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/asTvTagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/asTvAppName"
+        android:text="@string/app_tagline"
+        style="@style/Text.Black.S14"
+        android:layout_marginTop="@dimen/d12dp"/>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/asTvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/Text.Black.S14"
+        android:layout_marginBottom="@dimen/d12dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

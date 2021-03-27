@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Kitty</string>
+    <string name="app_tagline">An app to know about cats.</string>
+</resources>

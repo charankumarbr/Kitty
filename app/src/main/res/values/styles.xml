@@ -1,0 +1,20 @@
+<resources>
+
+    <style name="Text">
+
+    </style>
+
+    <style name="Text.Black" parent="Text">
+        <item name="android:textColor">@color/primary_black</item>
+    </style>
+
+    <style name="Text.Black.S14">
+        <item name="android:textSize">@dimen/s14sp</item>
+    </style>
+
+    <style name="Text.Splash" parent="Text">
+        <item name="android:textColor">@color/purple_500</item>
+        <item name="android:textSize">@dimen/s30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
