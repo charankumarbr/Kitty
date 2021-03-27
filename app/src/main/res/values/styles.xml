@@ -12,6 +12,10 @@
         <item name="android:textSize">@dimen/s14sp</item>
     </style>
 
+    <style name="Text.Black.S12">
+        <item name="android:textSize">@dimen/s12sp</item>
+    </style>
+
     <style name="Text.Splash" parent="Text">
         <item name="android:textColor">@color/purple_500</item>
         <item name="android:textSize">@dimen/s30sp</item>

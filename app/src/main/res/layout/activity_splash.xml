@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        style="@style/Text.Black.S14"
+        style="@style/Text.Black.S12"
         android:layout_marginBottom="@dimen/d12dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

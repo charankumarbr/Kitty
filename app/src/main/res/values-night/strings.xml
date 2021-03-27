@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_tagline">An app to know about cats.</string>
+    <string name="search">Search</string>
+    <string name="about">About</string>
 </resources>
