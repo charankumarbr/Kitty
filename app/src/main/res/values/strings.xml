@@ -3,4 +3,5 @@
     <string name="app_tagline">An app to know about cats.</string>
     <string name="search">Search</string>
     <string name="about">About</string>
+    <string name="about_app_message">A sample app to know about cats.</string>
 </resources>

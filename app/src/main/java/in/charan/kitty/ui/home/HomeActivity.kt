@@ -1,15 +1,21 @@
 package `in`.charan.kitty.ui.home
 
 import `in`.charan.kitty.R
+import `in`.charan.kitty.adapter.BreedAdapter
+import `in`.charan.kitty.adapter.BreedListItemViewHolder
+import `in`.charan.kitty.adapter.LoadingViewHolder
+import `in`.charan.kitty.adapter.OnListPageListener
 import `in`.charan.kitty.databinding.ActivityHomeBinding
 import `in`.charan.kitty.model.Result
 import `in`.charan.kitty.util.gone
 import `in`.charan.kitty.util.visible
 import `in`.charan.kitty.viewmodel.HomeViewModel
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 
@@ -44,7 +50,33 @@ class HomeActivity : AppCompatActivity() {
 
                 is Result.Success -> {
                     activityHomeBinding.ahPbLoading.gone()
-                    Log.d("home",  " ${it.data.breeds.size} items")
+                    Log.d("home", " ${it.data.breeds.size} items")
+                    if (activityHomeBinding.ahRvItems.adapter == null) {
+                        val mutableDataList: MutableList<Any> = it.data.breeds.toMutableList()
+                        val adapter: BreedAdapter = BreedAdapter.Builder()
+                            .setContentMetaData(
+                                BreedAdapter.ContentMetaData(mutableDataList,
+                                    10, it.data.totalBreeds, BreedListItemViewHolder.ITEM_VIEW_TYPE_CARD,
+                                    R.layout.layout_breed_card_list_item, BreedListItemViewHolder::class
+                                )
+                            )
+                            .setLoadingMetaData(
+                                BreedAdapter.LoadingMetaData(
+                                    loadingEndCondition, 3,
+                                    onListPageListener, 99,
+                                    R.layout.layout_loading_list_item, LoadingViewHolder::class
+                                )
+                            )
+                            .build()
+                        activityHomeBinding.ahRvItems.adapter = adapter
+                        activityHomeBinding.ahRvItems.visible()
+
+                    } else {
+                        val adapter = activityHomeBinding.ahRvItems.adapter
+                        if (adapter is BreedAdapter) {
+                            adapter.addNextPageData(it.data.breeds)
+                        }
+                    }
                 }
 
                 is Result.Error -> {
@@ -52,6 +84,16 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private val onListPageListener = object: OnListPageListener {
+        override fun onNextPage(nextPageIndex: Int) {
+            homeViewModel.getListOfBreeds(nextPageIndex)
+        }
+    }
+
+    private val loadingEndCondition: (Int, Int) -> Boolean = { size: Int, totalItems: Int ->
+        size == totalItems
     }
 
     private fun getBreeds(page: Int) {
@@ -71,6 +113,7 @@ class HomeActivity : AppCompatActivity() {
             }
 
             R.id.menu_about -> {
+                displayAboutDialog()
                 true
             }
 
@@ -78,5 +121,17 @@ class HomeActivity : AppCompatActivity() {
                 super.onOptionsItemSelected(item)
             }
         }
+    }
+
+    private fun displayAboutDialog() {
+        AlertDialog.Builder(this)
+            .setTitle(R.string.app_name)
+            .setMessage(R.string.about_app_message)
+            .setPositiveButton(android.R.string.ok) { dialogInterface: DialogInterface, i: Int ->
+                dialogInterface.dismiss()
+            }
+            .setCancelable(true)
+            .create()
+            .show()
     }
 }

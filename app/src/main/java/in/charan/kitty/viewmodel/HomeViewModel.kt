@@ -22,8 +22,6 @@ class HomeViewModel: ViewModel() {
     private val TAG = "HomeViewModel"
     private val breedRepository = BreedRepository()
 
-    private var listOfBreeds: Job? = null
-
     private val _breedList: MutableLiveData<Result<BreedList>> by lazy {
         MutableLiveData<Result<BreedList>>()
     }

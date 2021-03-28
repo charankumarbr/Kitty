@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:viewBindingIgnore="true"
+    android:layout_marginStart="@dimen/d6dp"
+    android:layout_marginEnd="@dimen/d6dp"
+    android:layout_marginTop="@dimen/d6dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="@dimen/d4dp"
+    app:cardElevation="@dimen/d3dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/lbliIvImage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="H,4:3"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/lbliTvDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:background="@color/black_blur"
+            style="@style/Text.Black.S12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/d6dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/lbliTvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/d50dp"
+            android:maxWidth="@dimen/d175dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:background="?attr/colorAccent"
+            style="@style/Text.Black.S14"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="@dimen/d6dp"
+            android:autoSizePresetSizes="14,16,18"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

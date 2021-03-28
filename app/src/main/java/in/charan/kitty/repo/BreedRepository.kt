@@ -6,6 +6,7 @@ import `in`.charan.kitty.network.ApiConnector
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlin.jvm.Throws
 
 /**
  * Created by Charan on March 27, 2021
@@ -14,6 +15,7 @@ class BreedRepository {
 
     private val TAG = "BreedRepository"
 
+    @Throws(Exception::class)
     suspend fun fetchBreeds(page: Int): Result<BreedList> {
         Log.d(TAG, "Thread a: ${Thread.currentThread().name}")
         return withContext(Dispatchers.IO) {

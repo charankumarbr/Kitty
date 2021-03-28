@@ -5,4 +5,12 @@
     <dimen name="s12sp">12sp</dimen>
 
     <dimen name="d12dp">12dp</dimen>
+    <dimen name="d6dp">6dp</dimen>
+    <dimen name="d175dp">175dp</dimen>
+    <dimen name="d50dp">50dp</dimen>
+    <dimen name="d4dp">4dp</dimen>
+    <dimen name="d3dp">3dp</dimen>
+    <dimen name="d8dp">8dp</dimen>
+    <dimen name="d30dp">30dp</dimen>
+    <dimen name="d100dp">100dp</dimen>
 </resources>
