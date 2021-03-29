@@ -4,6 +4,7 @@ import `in`.charan.kitty.model.Breed
 import `in`.charan.kitty.model.BreedEntryItem
 import `in`.charan.kitty.model.Range
 import `in`.charan.kitty.model.Result
+import `in`.charan.kitty.util.endWithPeriod
 import `in`.charan.kitty.util.formatWeight
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -56,7 +57,7 @@ class DetailViewModel: ViewModel() {
 
             addBreedItem(breedEntryItemList, "Observations", BreedEntryItem.VIEW_TEXT_HEADER, "Observations")
             //-- TODO: temperament can be shown as tags to gain user attention --//
-            addBreedItem(breedEntryItemList, "Temperament:", BreedEntryItem.VIEW_TEXT_SUB_HEADER, breed.temperament)
+            addBreedItem(breedEntryItemList, "Temperament:", BreedEntryItem.VIEW_TEXT_SUB_HEADER, breed.temperament?.endWithPeriod())
             addBreedItem(breedEntryItemList, "Affection", BreedEntryItem.VIEW_RANGE, getRange(current = breed.affection_level))
             addBreedItem(breedEntryItemList, "Child Friendly", BreedEntryItem.VIEW_RANGE, getRange(current = breed.child_friendly))
             addBreedItem(breedEntryItemList, "Dog Friendly", BreedEntryItem.VIEW_RANGE, getRange(current = breed.dog_friendly))

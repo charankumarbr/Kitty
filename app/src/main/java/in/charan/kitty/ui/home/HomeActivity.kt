@@ -65,24 +65,7 @@ class HomeActivity : AppCompatActivity() {
                                     R.layout.layout_breed_card_list_item, BreedListItemViewHolder::class
                                 )
                             )
-                            .setContentItemClickListener(object: OnItemClickListener<Any>{
-                                override fun onItemClick(
-                                    dataAtPosition: Any,
-                                    clickedItemPosition: Int
-                                ) {
-                                    when (dataAtPosition) {
-                                        is Breed -> {
-                                            Toast.makeText(this@HomeActivity,
-                                                "Content clicked: ${dataAtPosition.name}",
-                                                Toast.LENGTH_SHORT).show()
-                                            val bundle = Bundle()
-                                            bundle.putParcelable(DetailActivity.BREED_DATA, dataAtPosition)
-                                            DetailActivity.start(this@HomeActivity, bundle)
-                                        }
-                                    }
-                                }
-
-                            })
+                            .setContentItemClickListener(onListItemClick)
                             .setLoadingMetaData(
                                 BreedAdapter.LoadingMetaData(
                                     loadingEndCondition, 3,
@@ -109,6 +92,19 @@ class HomeActivity : AppCompatActivity() {
         })
     }
 
+    private val onListItemClick = object: OnItemClickListener<Any>{
+        override fun onItemClick(dataAtPosition: Any,
+                                 clickedItemPosition: Int) {
+            when (dataAtPosition) {
+                is Breed -> {
+                    val bundle = Bundle()
+                    bundle.putParcelable(DetailActivity.BREED_DATA, dataAtPosition)
+                    DetailActivity.start(this@HomeActivity, bundle)
+                }
+            }
+        }
+    }
+
     private val onListPageListener = object: OnListPageListener {
         override fun onNextPage(nextPageIndex: Int) {
             homeViewModel.getListOfBreeds(nextPageIndex)
@@ -131,10 +127,6 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.menu_search -> {
-                true
-            }
-
             R.id.menu_about -> {
                 displayAboutDialog()
                 true

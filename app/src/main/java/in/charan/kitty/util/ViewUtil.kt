@@ -22,7 +22,16 @@ fun String.formatWeight(): String {
     if (this.contains(" - ")) {
         var changed = this.replace(" - ", " Kgs - ")
         changed = changed.plus(" Kgs")
+        changed = changed.endWithPeriod()
         return changed
+    }
+    return this
+}
+
+fun String.endWithPeriod(): String {
+    val period = "."
+    if (!this.endsWith(period)) {
+        return this.plus(period)
     }
     return this
 }
