@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.textview.MaterialTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lehTvHeader"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    style="@style/Text.Bold.Black.S20"
+    android:layout_margin="@dimen/d12dp">
+
+</com.google.android.material.textview.MaterialTextView>

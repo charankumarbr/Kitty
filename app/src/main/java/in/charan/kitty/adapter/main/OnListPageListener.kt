@@ -1,4 +1,4 @@
-package `in`.charan.kitty.adapter
+package `in`.charan.kitty.adapter.main
 
 /**
  * Created by Charan on March 28, 2021

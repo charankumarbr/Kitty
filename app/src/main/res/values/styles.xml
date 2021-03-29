@@ -4,15 +4,35 @@
 
     </style>
 
+    <style name="Text.Bold" parent="Text">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Bold.Black" parent="Text">
+        <item name="android:textColor">@color/primary_black</item>
+    </style>
+
     <style name="Text.Black" parent="Text">
         <item name="android:textColor">@color/primary_black</item>
     </style>
 
-    <style name="Text.Black.S14">
+    <style name="Text.Bold.Black.S20" parent="Text.Bold.Black">
+        <item name="android:textSize">@dimen/s20sp</item>
+    </style>
+
+    <style name="Text.Bold.Black.S16" parent="Text.Bold.Black">
+        <item name="android:textSize">@dimen/s16sp</item>
+    </style>
+
+    <style name="Text.Black.S16" parent="Text.Black">
+        <item name="android:textSize">@dimen/s16sp</item>
+    </style>
+
+    <style name="Text.Black.S14" parent="Text.Black">
         <item name="android:textSize">@dimen/s14sp</item>
     </style>
 
-    <style name="Text.Black.S12">
+    <style name="Text.Black.S12" parent="Text.Black">
         <item name="android:textSize">@dimen/s12sp</item>
     </style>
 
@@ -20,5 +40,20 @@
         <item name="android:textColor">@color/purple_500</item>
         <item name="android:textSize">@dimen/s30sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.App.Slider" parent="Widget.MaterialComponents.Slider">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Slider</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Slider" parent="">
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSurface">@color/purple_200</item>
+
+        <item name="tickColorActive">@color/purple_500</item>
+        <item name="tickColorInactive">@color/purple_500</item>
+        <item name="trackColorActive">@color/purple_200</item>
+        <item name="trackColorInactive">@color/purple_200</item>
     </style>
 </resources>

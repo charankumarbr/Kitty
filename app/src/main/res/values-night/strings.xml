@@ -4,4 +4,6 @@
     <string name="search">Search</string>
     <string name="about">About</string>
     <string name="about_app_message">A sample app to know all about cats.</string>
+    <string name="read_more">Read More</string>
+    <string name="no_browser_app_found">No browser app found</string>
 </resources>

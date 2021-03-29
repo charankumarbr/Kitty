@@ -1,7 +1,7 @@
 package `in`.charan.kitty.model
 
-import kotlinx.android.parcel.Parcelize
 import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Weight(

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/d16dp">
+
+    <Button
+        android:id="@+id/leuBtnReadMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/d50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/read_more"
+        android:textAllCaps="true"
+        android:paddingStart="@dimen/d16dp"
+        android:paddingEnd="@dimen/d16dp"
+        android:layout_marginEnd="@dimen/d16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

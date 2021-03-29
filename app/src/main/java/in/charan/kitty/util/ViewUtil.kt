@@ -17,3 +17,12 @@ fun View.hide() {
 fun View.gone() {
     this.visibility = View.GONE
 }
+
+fun String.formatWeight(): String {
+    if (this.contains(" - ")) {
+        var changed = this.replace(" - ", " Kgs - ")
+        changed = changed.plus(" Kgs")
+        return changed
+    }
+    return this
+}

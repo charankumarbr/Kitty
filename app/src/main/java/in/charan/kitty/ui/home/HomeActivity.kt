@@ -1,20 +1,25 @@
 package `in`.charan.kitty.ui.home
 
 import `in`.charan.kitty.R
-import `in`.charan.kitty.adapter.BreedAdapter
-import `in`.charan.kitty.adapter.BreedListItemViewHolder
-import `in`.charan.kitty.adapter.LoadingViewHolder
-import `in`.charan.kitty.adapter.OnListPageListener
+import `in`.charan.kitty.adapter.*
+import `in`.charan.kitty.adapter.main.BreedAdapter
+import `in`.charan.kitty.adapter.main.BreedListItemViewHolder
+import `in`.charan.kitty.adapter.main.LoadingViewHolder
+import `in`.charan.kitty.adapter.main.OnListPageListener
 import `in`.charan.kitty.databinding.ActivityHomeBinding
+import `in`.charan.kitty.model.Breed
 import `in`.charan.kitty.model.Result
+import `in`.charan.kitty.ui.detail.DetailActivity
 import `in`.charan.kitty.util.gone
 import `in`.charan.kitty.util.visible
 import `in`.charan.kitty.viewmodel.HomeViewModel
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -60,6 +65,24 @@ class HomeActivity : AppCompatActivity() {
                                     R.layout.layout_breed_card_list_item, BreedListItemViewHolder::class
                                 )
                             )
+                            .setContentItemClickListener(object: OnItemClickListener<Any>{
+                                override fun onItemClick(
+                                    dataAtPosition: Any,
+                                    clickedItemPosition: Int
+                                ) {
+                                    when (dataAtPosition) {
+                                        is Breed -> {
+                                            Toast.makeText(this@HomeActivity,
+                                                "Content clicked: ${dataAtPosition.name}",
+                                                Toast.LENGTH_SHORT).show()
+                                            val bundle = Bundle()
+                                            bundle.putParcelable(DetailActivity.BREED_DATA, dataAtPosition)
+                                            DetailActivity.start(this@HomeActivity, bundle)
+                                        }
+                                    }
+                                }
+
+                            })
                             .setLoadingMetaData(
                                 BreedAdapter.LoadingMetaData(
                                     loadingEndCondition, 3,
@@ -127,7 +150,7 @@ class HomeActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle(R.string.app_name)
             .setMessage(R.string.about_app_message)
-            .setPositiveButton(android.R.string.ok) { dialogInterface: DialogInterface, i: Int ->
+            .setPositiveButton(android.R.string.ok) { dialogInterface: DialogInterface, _: Int ->
                 dialogInterface.dismiss()
             }
             .setCancelable(true)

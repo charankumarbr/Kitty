@@ -1,4 +1,4 @@
-package `in`.charan.kitty.adapter
+package `in`.charan.kitty.adapter.main
 
 import android.view.View
 

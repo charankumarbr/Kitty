@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/d12dp">
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/lerRange"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.45"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/Widget.App.Slider"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/lerTvHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/lerRange"
+        android:maxLines="2"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginTop="@dimen/d12dp"
+        android:layout_marginStart="@dimen/d12dp"
+        android:layout_marginEnd="@dimen/d12dp"
+        style="@style/Text.Black.S16"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/lerTvRangeMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lerRange"
+        app:layout_constraintStart_toStartOf="@id/lerRange"
+        android:text="0"
+        android:layout_marginStart="@dimen/d12dp"
+        style="@style/Text.Black.S14"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/lerTvRangeMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lerRange"
+        app:layout_constraintEnd_toEndOf="@id/lerRange"
+        android:text="5"
+        android:layout_marginEnd="@dimen/d12dp"
+        style="@style/Text.Black.S14"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

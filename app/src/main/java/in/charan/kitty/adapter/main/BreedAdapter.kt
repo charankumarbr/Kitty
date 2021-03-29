@@ -1,5 +1,6 @@
-package `in`.charan.kitty.adapter
+package `in`.charan.kitty.adapter.main
 
+import `in`.charan.kitty.adapter.OnItemClickListener
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -17,21 +18,23 @@ class BreedAdapter private constructor(private val builder: Builder)
     private val loadingMetaData = builder.loadingMetaData
     private var isPaginationEnabled = builder.loadingMetaData != null
     private var isPaginationInProgress = false
+    private val onListItemClickListener = builder.onItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AbstractViewHolder<Any> {
         val inflater = LayoutInflater.from(parent.context)
-        var kClass: KClass<out AbstractViewHolder<*>>? = null
-        val view = if (viewType == contentMetaData.itemViewType) {
-            kClass = contentMetaData.viewHolderClass
-            inflater.inflate(contentMetaData.layoutId, parent, false)
+        return if (viewType == contentMetaData.itemViewType) {
+            val kClass = contentMetaData.viewHolderClass
+            val isItemClickReqd = onListItemClickListener != null
+            val view = inflater.inflate(contentMetaData.layoutId, parent, false)
+            val constructor = kClass?.primaryConstructor
+            constructor?.call(view, onContentItemClick, isItemClickReqd) as AbstractViewHolder<Any>
 
         } else {
-            kClass = loadingMetaData?.viewHolderClass
-            inflater.inflate(loadingMetaData!!.layoutId, parent, false)
+            val kClass = loadingMetaData?.viewHolderClass
+            val view = inflater.inflate(loadingMetaData!!.layoutId, parent, false)
+            val constructor = kClass?.primaryConstructor
+            constructor?.call(view) as AbstractViewHolder<Any>
         }
-
-        val constructor = kClass?.primaryConstructor
-        return constructor?.call(view) as AbstractViewHolder<Any>
     }
 
     override fun onBindViewHolder(holder: AbstractViewHolder<Any>, position: Int) {
@@ -67,6 +70,12 @@ class BreedAdapter private constructor(private val builder: Builder)
         }
     }
 
+    private val onContentItemClick: (Int) -> Unit = { position ->
+        onListItemClickListener?.let {
+            it.onItemClick(contentMetaData.content[position], position)
+        }
+    }
+
     fun addNextPageData(nextPageData: List<Any>) {
         isPaginationInProgress = false
         if (contentMetaData.addNextPageData(nextPageData)) {
@@ -89,6 +98,8 @@ class BreedAdapter private constructor(private val builder: Builder)
         lateinit var contentMetaData: ContentMetaData
         var loadingMetaData: LoadingMetaData? = null
 
+        var onItemClickListener: OnItemClickListener<Any>? = null
+
         fun setContentMetaData(contentMetaData: ContentMetaData): Builder {
             this.contentMetaData = contentMetaData
             return this
@@ -96,6 +107,11 @@ class BreedAdapter private constructor(private val builder: Builder)
 
         fun setLoadingMetaData(loadingMetaData: LoadingMetaData?): Builder {
             this.loadingMetaData = loadingMetaData
+            return this
+        }
+
+        fun setContentItemClickListener(onListItemClickListener: OnItemClickListener<Any>): Builder {
+            this.onItemClickListener = onListItemClickListener
             return this
         }
 

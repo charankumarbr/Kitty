@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="in.charan.kitty">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".KittyApp"
@@ -12,9 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kitty">
-        <activity android:name=".ui.home.HomeActivity"
-            android:screenOrientation="userPortrait">
-        </activity>
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="userPortrait"></activity>
         <activity
             android:name=".ui.launch.SplashActivity"
             android:screenOrientation="userPortrait"
@@ -24,6 +25,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.detail.DetailActivity"
+            android:screenOrientation="userPortrait"
+            android:parentActivityName=".ui.home.HomeActivity">
         </activity>
     </application>
 
